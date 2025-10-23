@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Калькулятор четвертной оценки</title>
+</head>
+<body>
+    <h2>Расчёт четвертной оценки</h2>
+    <form id="gradeForm">
+        Сумма баллов СО: <input type="number" id="sum_CO" step="any"><br>
+        Макс. баллов СО: <input type="number" id="max_CO" step="any"><br>
+        Сумма баллов ФО: <input type="number" id="sum_FO" step="any"><br>
+        Кол-во ФО: <input type="number" id="num_FO"><br>
+        Факт. баллы СОЧ: <input type="number" id="fact_COCH" step="any"><br>
+        Макс. балл СОЧ: <input type="number" id="max_COCH" step="any"><br>
+        <button type="submit">Рассчитать</button>
+    </form>
+    <p id="result"></p>
+    <script>
+    document.getElementById('gradeForm').onsubmit = function(e){
+        e.preventDefault();
+        let sum_CO = parseFloat(document.getElementById('sum_CO').value) || 0;
+        let max_CO = parseFloat(document.getElementById('max_CO').value) || 1;
+        let sum_FO = parseFloat(document.getElementById('sum_FO').value) || 0;
+        let num_FO = parseInt(document.getElementById('num_FO').value) || 1;
+        let fact_COCH = parseFloat(document.getElementById('fact_COCH').value) || 0;
+        let max_COCH = parseFloat(document.getElementById('max_COCH').value) || 1;
+        let CO_part = (sum_CO / max_CO) * 0.25;
+        let FO_part = (sum_FO / (num_FO * 10)) * 0.25;
+        let COCH_part = (fact_COCH / max_COCH) * 0.5;
+        let grade = ((CO_part + FO_part + COCH_part) * 100).toFixed(2);
+        document.getElementById('result').innerText = "Итоговая оценка: " + grade;
+    };
+    </script>
+</body>
+</html>
