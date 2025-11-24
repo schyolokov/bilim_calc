@@ -8,13 +8,31 @@
             font-family: Arial, sans-serif;
             background: #f6f8fa;
         }
+        .row {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 32px;
+            margin: 30px;
+        }
+        @media (max-width: 900px) {
+            .row {
+                flex-direction: column;
+                align-items: center;
+                gap: 18px;
+                margin: 20px;
+            }
+        }
         .container {
             max-width: 420px;
-            margin: 30px auto;
             padding: 28px 32px 22px 32px;
             background: #fff;
             border-radius: 12px;
             box-shadow: 0 6px 14px rgba(0,0,0,0.10);
+            box-sizing: border-box;
+            width: 100%;
+            min-width: 320px;
         }
         h2 {
             text-align: center;
@@ -66,72 +84,78 @@
     </style>
 </head>
 <body>
-    <!-- Четвертная оценка -->
-    <div class="container">
-        <h2>Расчёт четвертной оценки</h2>
-        <form id="gradeForm" autocomplete="off">
-                        <div class="input-row">
-                <label for="sum_FO">Сумма баллов ФО:</label>
-                <input type="number" id="sum_FO" step="any">
-            </div>
-            <div class="input-row">
-                <label for="num_FO">Кол-во ФО:</label>
-                <input type="number" id="num_FO">
-            </div>
-            <div class="input-row">
-                <label for="sum_CO">Сумма баллов СОР:</label>
-                <input type="number" id="sum_CO" step="any">
-            </div>
-            <div class="input-row">
-                <label for="max_CO">Макс. баллов СОР:</label>
-                <input type="number" id="max_CO" step="any">
-            </div>
-            <div class="input-row">
-                <label for="fact_COCH">Факт. баллы СОЧ:</label>
-                <input type="number" id="fact_COCH" step="any">
-            </div>
-            <div class="input-row">
-                <label for="max_COCH">Макс. балл СОЧ:</label>
-                <input type="number" id="max_COCH" step="any">
-            </div>
-            <button type="submit">Рассчитать</button>
-        </form>
-        <div id="result"></div>
-    </div>
+    <div class="row">
+        <!-- Четвертная оценка -->
+        <div class="container">
+            <h2>Расчёт четвертной оценки</h2>
+            <form id="gradeForm" autocomplete="off">
+                <div class="input-row">
+                    <label for="sum_FO">Сумма баллов ФО:</label>
+                    <input type="number" id="sum_FO" step="any">
+                </div>
+                <div class="input-row">
+                    <label for="num_FO">Кол-во ФО:</label>
+                    <input type="number" id="num_FO">
+                </div>
+                <div class="input-row">
+                    <label for="sum_CO">Сумма баллов СОР:</label>
+                    <input type="number" id="sum_CO" step="any">
+                </div>
+                <div class="input-row">
+                    <label for="max_CO">Макс. баллов СОР:</label>
+                    <input type="number" id="max_CO" step="any">
+                </div>
+                <div class="input-row">
+                    <label for="fact_COCH">Факт. баллы СОЧ:</label>
+                    <input type="number" id="fact_COCH" step="any">
+                </div>
+                <div class="input-row">
+                    <label for="max_COCH">Макс. балл СОЧ:</label>
+                    <input type="number" id="max_COCH" step="any">
+                </div>
+                <button type="submit">Рассчитать</button>
+            </form>
+            <div id="result"></div>
+        </div>
 
-    <!-- Полугодовая оценка -->
-    <div class="container">
-        <h2>Расчёт полугодовой оценки</h2>
-        <form id="semesterForm" autocomplete="off">
-            <div class="input-row">
-                <label for="sum_FO_sem">Сумма ФО:</label>
-                <input type="number" id="sum_FO_sem" step="any">
-            </div>
-            <div class="input-row">
-                <label for="num_FO_sem">Кол-во ФО:</label>
-                <input type="number" id="num_FO_sem">
-            </div>
-            <div class="input-row">
-                <label for="sum_CO_sem">Сумма баллов СОР:</label>
-                <input type="number" id="sum_CO_sem" step="any">
-            </div>
-            <div class="input-row">
-                <label for="max_sum_CO_sem">Сумма макс. баллов СОР:</label>
-                <input type="number" id="max_sum_CO_sem" step="any">
-            </div>
-            <button type="submit">Рассчитать</button>
-        </form>
-        <div id="result_sem"></div>
+        <!-- Полугодовая оценка -->
+        <div class="container">
+            <h2>Расчёт полугодовой оценки</h2>
+            <form id="semesterForm" autocomplete="off">
+                <div class="input-row">
+                    <label for="sum_FO_sem">Сумма ФО:</label>
+                    <input type="number" id="sum_FO_sem" step="any">
+                </div>
+                <div class="input-row">
+                    <label for="num_FO_sem">Кол-во ФО:</label>
+                    <input type="number" id="num_FO_sem">
+                </div>
+                <div class="input-row">
+                    <label for="sum_CO_sem">Сумма баллов СОР:</label>
+                    <input type="number" id="sum_CO_sem" step="any">
+                </div>
+                <div class="input-row">
+                    <label for="max_sum_CO_sem">Сумма макс. баллов СОР:</label>
+                    <input type="number" id="max_sum_CO_sem" step="any">
+                </div>
+                <div class="input-row">
+                    <label for="total_perc_sem">%Сумма:</label>
+                    <input type="text" id="total_perc_sem" readonly>
+                </div>
+                <button type="submit">Рассчитать</button>
+            </form>
+            <div id="result_sem"></div>
+        </div>
     </div>
 
     <script>
     // Четверть
-    document.getElementById('gradeForm').onsubmit = function(e){
+    document.getElementById('gradeForm').onsubmit = function(e) {
         e.preventDefault();
-        let sum_CO   = parseFloat(document.getElementById('sum_CO').value)   || 0;
-        let max_CO   = parseFloat(document.getElementById('max_CO').value)   || 1;
-        let sum_FO   = parseFloat(document.getElementById('sum_FO').value)   || 0;
-        let num_FO   = parseInt(document.getElementById('num_FO').value)     || 1;
+        let sum_CO    = parseFloat(document.getElementById('sum_CO').value)    || 0;
+        let max_CO    = parseFloat(document.getElementById('max_CO').value)    || 1;
+        let sum_FO    = parseFloat(document.getElementById('sum_FO').value)    || 0;
+        let num_FO    = parseInt(document.getElementById('num_FO').value)      || 1;
         let fact_COCH = parseFloat(document.getElementById('fact_COCH').value) || 0;
         let max_COCH  = parseFloat(document.getElementById('max_COCH').value)  || 1;
 
@@ -144,21 +168,21 @@
     };
 
     // Полугодие
-document.getElementById('semesterForm').onsubmit = function(e){
-    e.preventDefault();
+    document.getElementById('semesterForm').onsubmit = function(e) {
+        e.preventDefault();
 
-    let sum_FO_sem     = parseFloat(document.getElementById('sum_FO_sem').value)     || 0;
-    let num_FO_sem     = parseInt(document.getElementById('num_FO_sem').value)       || 1;
-    let sum_CO_sem     = parseFloat(document.getElementById('sum_CO_sem').value)     || 0;
-    let max_sum_CO_sem = parseFloat(document.getElementById('max_sum_CO_sem').value) || 1;
+        let sum_FO_sem     = parseFloat(document.getElementById('sum_FO_sem').value)     || 0;
+        let num_FO_sem     = parseInt(document.getElementById('num_FO_sem').value)       || 1;
+        let sum_CO_sem     = parseFloat(document.getElementById('sum_CO_sem').value)     || 0;
+        let max_sum_CO_sem = parseFloat(document.getElementById('max_sum_CO_sem').value) || 1;
 
-    let perc_FO  = (sum_FO_sem / (num_FO_sem * 10)) * 50;
-    let perc_SOR = (sum_CO_sem / max_sum_CO_sem) * 50;
-    let total_perc = perc_FO + perc_SOR;
+        let perc_FO  = (sum_FO_sem / (num_FO_sem * 10)) * 50;
+        let perc_SOR = (sum_CO_sem / max_sum_CO_sem) * 50;
+        let total_perc = perc_FO + perc_SOR;
 
-    document.getElementById('total_perc_sem').value = total_perc.toFixed(2);
-    document.getElementById('result_sem').innerText = "Итоговая оценка: " + total_perc.toFixed(2);
-};
+        document.getElementById('total_perc_sem').value = total_perc.toFixed(2);
+        document.getElementById('result_sem').innerText = "Итоговая оценка: " + total_perc.toFixed(2);
+    };
     </script>
 </body>
 </html>
