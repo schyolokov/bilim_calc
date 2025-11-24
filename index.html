@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Калькуляторы оценок</title>
+    <title>Калькулятор оценок за четверть и полугодие</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -70,21 +70,21 @@
     <div class="container">
         <h2>Расчёт четвертной оценки</h2>
         <form id="gradeForm" autocomplete="off">
-            <div class="input-row">
-                <label for="sum_CO">Сумма баллов СО:</label>
-                <input type="number" id="sum_CO" step="any">
-            </div>
-            <div class="input-row">
-                <label for="max_CO">Макс. баллов СО:</label>
-                <input type="number" id="max_CO" step="any">
-            </div>
-            <div class="input-row">
+                        <div class="input-row">
                 <label for="sum_FO">Сумма баллов ФО:</label>
                 <input type="number" id="sum_FO" step="any">
             </div>
             <div class="input-row">
                 <label for="num_FO">Кол-во ФО:</label>
                 <input type="number" id="num_FO">
+            </div>
+            <div class="input-row">
+                <label for="sum_CO">Сумма баллов СОР:</label>
+                <input type="number" id="sum_CO" step="any">
+            </div>
+            <div class="input-row">
+                <label for="max_CO">Макс. баллов СОР:</label>
+                <input type="number" id="max_CO" step="any">
             </div>
             <div class="input-row">
                 <label for="fact_COCH">Факт. баллы СОЧ:</label>
@@ -119,12 +119,6 @@
                 <label for="max_sum_CO_sem">Сумма макс. баллов СОР:</label>
                 <input type="number" id="max_sum_CO_sem" step="any">
             </div>
-
-            <div class="input-row">
-                <label for="total_perc_sem">%Сумма:</label>
-                <input type="text" id="total_perc_sem" readonly>
-            </div>
-
             <button type="submit">Рассчитать</button>
         </form>
         <div id="result_sem"></div>
@@ -170,9 +164,7 @@
         document.getElementById('total_perc_sem').value = total_perc.toFixed(2);
 
         document.getElementById('result_sem').innerText =
-            "%ФО: " + perc_FO.toFixed(2) + "%, " +
-            "%СОР: " + perc_SOR.toFixed(2) + "%, " +
-            "%Сумма: " + total_perc.toFixed(2) + "%";
+            document.getElementById('result').innerText = "Итоговая оценка: " + total_perc;
     };
     </script>
 </body>
